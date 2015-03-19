@@ -15,7 +15,9 @@
 					;tes
 ;coba lt
 
-(add-hook 'lisp-mode-hook '(lambda ()  (local-set-key (kbd "RET") 'newline-and-indent))) ;;not working
+(define-key global-map (kbd "RET") 'newline-and-indent)
+(define-key global-map (kbd "<apps>") 'execute-extended-command)
+
 
 
 (show-paren-mode t)               ;; turn paren-mode on
@@ -38,3 +40,12 @@
     '("italic-command" "bold-command" "italic-declaration" "bold-declaration"))
 ;;  (eval-after-load "tex-mode" '(fset 'tex-font-lock-suscript 'ignore)) ;; disable auto subscript for latex file
 
+
+;(require 'bibtex)
+
+(setq reftex-plug-into-AUCTex t)
+(setq-default TeX-PDF-mode t)
+(setq-default TeX-engine 'luatex)
+;;(setq latex-run-command "pdflatex")
+
+(cd "E:\\s3\\coding_theory\\modulation_codes-erasure_decoding\\paper")
