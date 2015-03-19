@@ -11,8 +11,8 @@
 (global-auto-complete-mode t)
 
 (require 'auto-complete-auctex)
-
-
+;;test
+;test
 
 (add-hook 'lisp-mode-hook '(lambda ()  (local-set-key (kbd "RET") 'newline-and-indent))) ;;not working
 
