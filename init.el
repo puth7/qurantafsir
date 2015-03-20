@@ -98,9 +98,13 @@
 ;;   (setq auto-indent-newline-function 'newline-and-indent))
 ;; (add-hook 'sage-shell:sage-mode-hook 'set-sage-newline-and-indent)
 
-
 (add-to-list 'auto-indent-disabled-modes-list 'sage-shell:sage-mode)
 (defun set-newline-and-indent ()
   "Map the return key with `newline-and-indent'"
   (local-set-key (kbd "RET") 'newline-and-indent))
 (add-hook 'sage-shell:sage-mode-hook 'set-newline-and-indent)
+;;------------------------------------------
+
+;;inverse/forward search mode latex
+(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(setq TeX-source-correlate-start-server t)
