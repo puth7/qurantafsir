@@ -38,7 +38,7 @@
 ;------------------------------------------
 
 
-;;;latex normal font-------------------------
+;;;latex normal font---only work with auctex----------------------
 ;; Only change sectioning colour
 (setq font-latex-fontify-sectioning 'color)
 ;; super-/sub-script on baseline
@@ -51,6 +51,7 @@
 ; Exclude bold/italic from keywords
 (setq font-latex-deactivated-keyword-classes
     '("italic-command" "bold-command" "italic-declaration" "bold-declaration"))
+
 
 ;;  (eval-after-load "tex-mode" '(fset 'tex-font-lock-suscript 'ignore)) ;; disable auto subscript for latex file
 
@@ -77,7 +78,7 @@
 
   (setq auto-indent-on-visit-file t) ;; If you want auto-indent on for files
   (require 'auto-indent-mode)
-  (auto-indent-global-mode)
+ (auto-indent-global-mode)
 
 
 
@@ -86,3 +87,20 @@
 
 ;;(add-hook 'lisp-mode-hook '(lambda ()  (local-set-key (kbd "RET") 'newline-and-indent))) ;;not working
 
+;;-------------------------------------------
+
+;;; Indentation for python
+;; Enter key executes newline-and-indent
+
+
+;; (defun set-sage-newline-and-indent ()
+;;   "change auto indent with normal one"
+;;   (setq auto-indent-newline-function 'newline-and-indent))
+;; (add-hook 'sage-shell:sage-mode-hook 'set-sage-newline-and-indent)
+
+
+(add-to-list 'auto-indent-disabled-modes-list 'sage-shell:sage-mode)
+(defun set-newline-and-indent ()
+  "Map the return key with `newline-and-indent'"
+  (local-set-key (kbd "RET") 'newline-and-indent))
+(add-hook 'sage-shell:sage-mode-hook 'set-newline-and-indent)
